@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Candidats {% endblock %}
+{% block stylesheets %}
+    <style>
+        input,textarea,select{
+            width: 100%;
+
+        }
+        #body{
+            background-color: rgb(0,102,102);
+        }
+        #btn{
+            background-color: rgb(255,178,102);
+        }
+        #card{
+            background-color: rgb(7,238,222);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col col-lg-4 mt-4">
+				<div class="card p-3" id="card">
+					<h4 style="text-align: center">Formulaire d'Ajout</h4><hr>
+                    <div style="text-align: ">
+					{{ form_start(form) }}
+					{{ form_row(form.nom, {'attr': { 'placeholder': "Nom du candidat"}}) }}
+					{{ form_row(form.prenom, {'attr': { 'placeholder': "Prenom du candidat"}}) }}
+					{{ form_row(form.email, {'attr': { 'placeholder': "@exemple.com"}}) }}
+					{{ form_row(form.telephone, {'attr': { 'placeholder': "+264345248778"}}) }}
+                    </div>
+                    <hr>
+					<button type="submit" class="btn col-8" id="btn">Ajouter</button>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

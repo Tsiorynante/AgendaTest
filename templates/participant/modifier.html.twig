@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Candidats {% endblock %}
+{% block stylesheets %}
+    <style>
+        input,textarea,select{
+            width: 100%;
+
+        }
+        #body{
+            background-color: rgb(0,102,102);
+        }
+        #btn{
+            background-color: rgb(255,178,102);
+        }
+        #card{
+            background-color: rgb(7,238,222);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col col-lg-4 mt-4">
+				<div class="card p-3" id="card">
+					<h4 style="text-align: center">Formulaire de modification</h4><hr>
+					{{form_start(form)}}
+					{{ form_row(form.nom) }}
+					{{ form_row(form.prenom) }}
+					{{ form_row(form.email) }}
+					{{ form_row(form.telephone) }}
+					<hr>
+					<button type="submit" class="btn btn-primary col-12" id="btn">Modifier →</button>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

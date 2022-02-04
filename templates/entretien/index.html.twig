@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien{% endblock %}
+{% block stylesheets %}
+    <style>
+        #liste{
+            background-color: rgb(0,102,102);
+        }
+
+    </style>
+
+{% endblock %}
+{% block body %}
+    <h1>Entretien Liste</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>Lieu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entretien in entretiens %}
+            <tr>
+                <td id="liste">{{ entretien.Titre }}</td>
+                <td id="liste">{{ entretien.DateDebut ? entretien.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td id="liste">{{ entretien.DateFin ? entretien.DateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td id="liste">{{ entretien.Lieu }}</td>
+                <td id="liste">
+                    <a class="btn bg-primary" href="{{ path('entretien_show', {'id': entretien.id}) }}">show</a>
+                    <a class="btn bg-warning" href="{{ path('entretien_edit', {'id': entretien.id}) }}">edit</a>
+                    <a class="btn bg-danger" href="{{ path('entretien_delete', {'id': entretien.id}) }}"onclick="return confirm('Voulez-vous vraiment supprimer?')">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn bg-info" href="{{ path('entretien_new') }}">Ajouter nouveau</a>
+{% endblock %}

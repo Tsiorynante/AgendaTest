@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+    <h1>Entretien Details</h1>
+    <div class="container-fluid col-12 border border-light" >
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entretien.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ entretien.Titre }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ entretien.DateDebut ? entretien.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ entretien.DateFin ? entretien.DateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ entretien.Lieu }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <a class="btn bg-primary" href="{{ path('entretien_index') }}">Retour à la liste</a>
+
+    <a class="btn bg-warning" href="{{ path('entretien_edit', {'id': entretien.id}) }}">Modifier</a>
+
+    <a class="btn bg-danger" href="{{ path('entretien_delete', {'id': entretien.id}) }}">Supprimer</a>
+    {{ include('entretien/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Entretien{% endblock %}
+
+{% block body %}
+
+    {{ include('entretien/_form.html.twig',{'text_label':'Formulaire'},{'button_label': 'Ajouter'}) }}
+
+    <a href="{{ path('entretien_index') }}">back to list</a>
+{% endblock %}

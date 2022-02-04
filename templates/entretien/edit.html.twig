@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Entretien{% endblock %}
+
+{% block body %}
+
+    {{ include('entretien/_form.html.twig', {'text_label': 'Formulaire de modification'}, {'button_label': 'Modifier  '}) }}
+
+{% endblock %}

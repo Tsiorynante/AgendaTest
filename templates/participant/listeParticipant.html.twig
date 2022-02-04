@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Participants {% endblock %}   
+
+{% block stylesheets %}
+    <style>
+        #leftcontainer{
+            border-radius: 3px;
+            border-color: black;
+        }
+        #listebg{
+            background-color: rgb(204,204,255);
+        
+        }
+        #cardHeader{
+            background-color: rgb(0,102,102);
+        
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block body %}
+  <div class="container col-8">
+    <a class="btn bg-info" href="{{ path('participants_add') }}">Ajouter nouveau</a>
+    {% for participant in participants %}
+      <div class="card shadow-1 fx-row">
+        <div class="d-flex vcenter fx-center px-4" id="cardHeader">
+          <h4>Photo</h4>
+        </div>
+        <div class="flex fx-col fx-grow">
+        <div class="card-header">{{participant.nom}} {{participant.prenom}}</div>
+        <div class="card-content">
+          <p><u> Email:    </u> {{participant.email}}</p> <br>
+          <p><u> Telephone:</u> {{participant.telephone}}</p>
+        </div>
+        <div class="card-content">
+          <div class="btn-group rounded-1">
+          <a class="btn airforce dark-2" href="{{ path('participants_up', {'id': participant.id}) }}">Modifier</a>
+          <a class="btn airforce dark-2" href="{{ path('participants_supp', {'id': participant.id}) }}"onclick="return confirm('Voulez-vous vraiment supprimer?')">Supprimer</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    
+    {% endfor %}   
+  </div>
+    <div class="container" id='righcontainer'>
+    </div>
+ {% endblock %}
+
